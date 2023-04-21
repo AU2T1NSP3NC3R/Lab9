@@ -34,8 +34,8 @@ public:
 
 	int getSize();
 
-	T getAllAscending();
-	T getAllDescending();
+	void getAllAscending(node<T>*);
+	void getAllDescending(node<T>*);
 
 	void printTree(node*, int);
 	void emptyTree();
