@@ -10,8 +10,8 @@ int tree<T>::height(node<T>* parent) {
 	int h = 0;
 	if (parent != nullptr) {
 		int lHeight = height(parent->left);
-		int rheight = height(parent->right);
-		int maxHeight = max(lHeight, rHeight);
+		int rHeight = height(parent->right);
+		int maxHeight = std::max(lHeight, rHeight);
 		h = maxHeight + 1;
 	}
 	return h;
@@ -43,14 +43,14 @@ node<T>* tree<T>::llRotate(node<T>* parent) {
 
 template <class T>
 node<T>* tree<T>::rlRotate(node<T>* parent) {
-	node* temp = parent->right;
+	node<T>* temp = parent->right;
 	parent->right = llRotate(temp);
 	return rrRotate(parent);
 }
 
 template <class T>
 node<T>* tree<T>::lrRotate(node<T>* parent) {
-	node* temp = parent->left;
+	node<T>* temp = parent->left;
 	parent->left = rrRotate(temp);
 	return llRotate(parent);
 }
@@ -63,7 +63,7 @@ node<T>* tree<T>::balance(node<T>* temp) {
 			temp = llRotate(temp);
 		}
 		else {
-			t = lrRotate(temp);
+			temp = lrRotate(temp);
 		}
 	}
 	else if (diff < -1) {
@@ -80,7 +80,7 @@ node<T>* tree<T>::balance(node<T>* temp) {
 template <class T>
 node<T>* tree<T>::insert(node<T>* rt, T* inVal) {
 	if (rt == nullptr) {
-		node<T>* newNode = new node(inVal);
+		node<T>* newNode = new node<T>(inVal);
 		rt = newNode;
 		size++;
 		return rt;
@@ -109,12 +109,12 @@ void tree<T>::printTree(node<T>* parent, int l) {
 	int i;
 	if (parent != nullptr) {
 		show(parent->right, l + 1);
-		cout << " ";
+		std::cout << " ";
 		if (parent == root) {
-			cout << "Root -> ";
+			std::cout << "Root -> ";
 		}
-		for (i = 0; i < l && p != root; i++) {
-			cout << " " << *parent->data;
+		for (i = 0; i < l && parent != root; i++) {
+			std::cout << " " << *parent->data;
 			show(parent->left, l + 1);
 		}
 	}
@@ -142,7 +142,7 @@ node<T>* tree<T>::remove(node<T>* rt, T* inVal) {
 	else {
 		temp = rt;
 		if (rt->left == nullptr) {
-			rt = rt->right
+			rt = rt->right;
 		}
 		else if (rt->right == nullptr) {
 			rt = rt->left;

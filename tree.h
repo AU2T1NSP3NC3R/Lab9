@@ -4,31 +4,31 @@
 #include<sstream>
 #include<algorithm>
 #define pow2(n) (1 << (n))
-using namespace std;
 #include "node.h"
 #include "node.cpp"
+
 template <class T>
 class tree
 {
 public:
 	tree();
 	~tree();
-	void clearTree(node*);
+	void clearTree(node<T>*);
 
 	void publicInsert(T*);
 	void publicRemove(T*);
 
-	node* insert(node*, T*);
-	int height(node*);
-	int difference(node*);
+	node<T>* insert(node<T>*, T*);
+	int height(node<T>*);
+	int difference(node<T>*);
 
-	node* rrRotate(node*);
-	node* llRotate(node*);
-	node* lrRotate(node*);
-	node* rlRotate(node*);
+	node<T>* rrRotate(node<T>*);
+	node<T>* llRotate(node<T>*);
+	node<T>* lrRotate(node<T>*);
+	node<T>* rlRotate(node<T>*);
 
-	node* balance(node*);
-	node* findMin(node*);
+	node<T>* balance(node<T>*);
+	node<T>* findMin(node<T>*);
 
 	T* find(T*);
 
@@ -37,9 +37,9 @@ public:
 	T getAllAscending();
 	T getAllDescending();
 
-	void printTree(node*, int);
+	void printTree(node<T>*, int);
 	void emptyTree();
-	node* remove(node*, T*);
+	node<T>* remove(node<T>*, T*);
 private:
 	node<T>* root;
 	int size;

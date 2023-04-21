@@ -128,11 +128,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="node.h" />
+    <ClInclude Include="Part.h" />
     <ClInclude Include="tree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="node.cpp" />
+    <ClCompile Include="Part.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="tree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\Downloads\Hw1\Hw1\Hw1\MobyDick.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
