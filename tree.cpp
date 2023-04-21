@@ -147,6 +147,7 @@ node<T>* tree<T>::remove(node<T>* rt, T* inVal) {
 		else if (rt->right == nullptr) {
 			rt = rt->left;
 		}
+		size--;
 		delete temp;
 	}
 	if (rt == nullptr) {
@@ -205,4 +206,51 @@ void tree<T>::clearTree(node<T>* temp) {
 		clearTree(temp->right);
 		delete temp;
 	}
+}
+
+template <class T>
+void tree<T>::emptyTree() {
+	clearTree(root);
+}
+
+template <class T>
+T* tree<T>::find(T* inVal) {
+	if (root == nullptr) {
+		return nullptr;
+	}
+	node* temp = root;
+	while (temp->data != inVal) {
+		if (temp == nullptr) {
+			return nullptr;
+		}
+		else if (*inVal < *temp->data) {
+			temp = temp->left;
+		}
+		else if (*inVal > *temp->data) {
+			temp = temp->right;
+		}
+		else if(*inVal == *temp->data){
+			return temp->data;
+		}
+	}
+}
+
+template <class T>
+void tree<T>::getAllAscending(node<T>* temp) {
+	if (temp == nullptr) {
+		return;
+	}
+	getAllAscending(temp->left);
+	cout << *temp->data << endl;
+	getAllAscending(temp->right);
+}
+
+template <class T>
+void tree<T>::getAllDescending(node<T>* temp) {
+	if (temp == nullptr) {
+		return;
+	}
+	getAllDescending(temp->right);
+	cout << *temp->data << endl;
+	getAllDescending(temp->left);
 }
