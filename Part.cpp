@@ -17,6 +17,11 @@ bool Part::operator>(const Part& inVal) {
 	return(this->word > inVal.word);
 }
 
+bool Part::operator!=(const Part& inVal) {
+	return(this->word != inVal.word);
+}
+
 bool Part::operator==(const Part& inVal) {
 	return(this->word.compare(inVal.word) == 0);
 }
+

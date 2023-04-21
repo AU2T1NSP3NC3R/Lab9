@@ -7,7 +7,6 @@ public:
 	node* left;
 	node* right;
 
-	node();
 	node(T*);
 };
 

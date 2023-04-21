@@ -34,6 +34,9 @@ public:
 
 	int getSize();
 
+	void publicGetAllAscending();
+	void publicGetAllDescending();
+
 	void getAllAscending(node<T>*);
 	void getAllDescending(node<T>*);
 

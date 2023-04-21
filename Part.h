@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
-
-
+#include <iostream>
 
 class Part
 {
@@ -15,7 +14,14 @@ class Part
 
 		bool operator<(const Part&);
 		bool operator>(const Part&);
+		bool operator!=(const Part&);
 		bool operator==(const Part&);
+
+		friend std::ostream& operator<<(std::ostream& os, const Part& inVal) {
+			os << inVal.word;
+			return os;
+		}
+
 
 
 

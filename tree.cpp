@@ -218,12 +218,9 @@ T* tree<T>::find(T* inVal) {
 	if (root == nullptr) {
 		return nullptr;
 	}
-	node* temp = root;
-	while (temp->data != inVal) {
-		if (temp == nullptr) {
-			return nullptr;
-		}
-		else if (*inVal < *temp->data) {
+	node<T>* temp = root;
+	while (*temp->data != *inVal) {
+		if (*inVal < *temp->data) {
 			temp = temp->left;
 		}
 		else if (*inVal > *temp->data) {
@@ -232,6 +229,12 @@ T* tree<T>::find(T* inVal) {
 		else if(*inVal == *temp->data){
 			return temp->data;
 		}
+		if (temp == nullptr) {
+			return nullptr;
+		}
+	}
+	if (*inVal == *temp->data) {
+		return temp->data;
 	}
 }
 
@@ -241,7 +244,7 @@ void tree<T>::getAllAscending(node<T>* temp) {
 		return;
 	}
 	getAllAscending(temp->left);
-	cout << *temp->data << endl;
+	std::cout << *temp->data << std::endl;
 	getAllAscending(temp->right);
 }
 
@@ -251,6 +254,16 @@ void tree<T>::getAllDescending(node<T>* temp) {
 		return;
 	}
 	getAllDescending(temp->right);
-	cout << *temp->data << endl;
+	std::cout << *temp->data << std::endl;
 	getAllDescending(temp->left);
+}
+
+template <class T>
+void tree<T>::publicGetAllAscending() {
+	getAllAscending(root);
+}
+
+template <class T>
+void tree<T>::publicGetAllDescending() {
+	getAllDescending(root);
 }
